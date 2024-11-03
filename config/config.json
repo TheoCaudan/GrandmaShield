@@ -1,0 +1,50 @@
+{
+    "whitelist": {
+        "startup_programs": [
+            "Microsoft Edge",
+            "Google Chrome",
+            "Mozilla Firefox",
+            "Microsoft OneDrive",
+            "Microsoft Teams",
+            "Zoom",
+            "Skype",
+            "Adobe Acrobat Reader",
+            "Spotify",
+            "Microsoft Office",
+            "Dropbox",
+            "LibreOffice",
+            "Windows Security",
+            "Intel Graphics Command Center",
+            "NVIDIA GeForce Experience",
+            "Epson Printer Software"
+        ],
+        "network_connections": [
+            {
+                "ip": "192.168.1.1",
+                "port": 80,
+                "protocol": "TCP",
+                "service": "HTTP",
+                "description": "Local router access"
+            },
+            {
+                "ip": "10.0.0.1",
+                "port": 443,
+                "protocol": "TCP",
+                "service": "HTTPS",
+                "description": "Secure access to internal web application"
+            },
+            {
+                "ip": "8.8.8.8",
+                "port": 53,
+                "protocol": "UDP",
+                "service": "DNS",
+                "description": "Google Public DNS"
+            }
+        ]
+    },
+    "sensitive_dirs": [
+        "C:/Users/theoc/Documents",
+        "C:/Users/theoc/VirtualBox VMs",
+        "C:/Users/theoc/.ssh"
+    ]
+}
