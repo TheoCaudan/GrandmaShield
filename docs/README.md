@@ -1,23 +1,156 @@
-# Bienvenue dans le README du projet Mamie
+# Utility Scripts for File Management, Backup, and Security
 
-## Le projet vient au départ de mon envie de résoudre une bonne fois pour toute les problèmes de ma mamie sur son ordinateur.J'ai donc pensé d'abord à son problème de doublons qu'elle génère sans faire exprès de façon plutôt conséquente à la longue.
+This repository contains a series of Python scripts that automate various tasks such as backing up files, organizing directories, cleaning up downloads, and performing basic security checks. Below is a brief overview of each script and how to use them.
 
-### 1. DPL_Handler
+---
 
-Le DPL_Handler va simplement récupérer le hash de tous les fichiers dans le 
-dossier spécifié et va les comparer puis supprimer les doublons identifiés.
+## Table of Contents
+1. [Backup Files Script](#backup-files-script)
+2. [Clean Empty Files and Directories Script](#clean-empty-files-and-directories-script)
+3. [Cleanup Downloads Script](#cleanup-downloads-script)
+4. [Duplicate File Finder Script](#duplicate-file-finder-script)
+5. [Organize Files Script](#organize-files-script)
+6. [Security Monitoring Script](#security-monitoring-script)
+7. [Setup Instructions](#setup-instructions)
 
-## Après cela il fallait qu'elle retrouve ses fichiers facilement donc j'ai pensé à un outil automatique pour organiser ses fichiers sans qu'elle n'ai a reflechir où le trouver.
+---
 
-### 2. FILE_Organizer
+### Backup Files Script
 
-Le FILE_Organizer va lui organiser les fichiers par type, on aurait pu le faire par date (la fonction existe il suffira d'ajouter la ligne : "organize_files_by_date" à la place de "organize_files_by_type" à la fin du fichier file_organizer.py), j'ai choisi par type parceque souvent elle me dit quel type c'est quand elle veut que je l'aide à chercher un fichier.
-Tout d'abord il faudra renseigner au fichier file_organizer.py le path/to/your/directory le dossier que vous souhaitez ranger par type. 
-Le programme va ouvrir le dossier, lister son contenu et regarder le type des fichiers presents puis les trier par type dans des dossiers nommé avec les types de dossier en majuscules parceque ma mamie a une mauvaise vue.
+This script backs up files from a source directory to a specified destination directory. It copies all files, retaining the folder structure.
 
-## Mais quand est-il du dossier de téléchargements ? On le sait tous c'est souvent le desordre, alors j'ai pensé à un outil simple pour nettoyer tout ça.
+- **File**: `backup_files.py`
+- **Function**: Copies all files from `src_dir` to `dest_dir`.
+- **Usage**:
+    ```python
+    src_dir = "C:/path/to/documents"
+    dest_dir = "Z:/Backup/Documents"
+    backup_files(src_dir, dest_dir)
+    ```
+- **Example Output**: `Copied C:/path/to/documents/file.txt to Z:/Backup/Documents/file.txt`
 
-Le but est d'avoir un outil simple qui va vérifier depuis combien de temps un fichier est dans le dossier cible et va l'archiver où vous le souhaiter si il est jugé trop "vieux". Cela va permet d'avoir un dossier de téléchargements plus propre en attendant que je fasse un script pour ségréguer le contenu des archives et supprimer et/ou déplacer ce dernier.
+---
 
-## Pendant que j'y suis, étant étudiant en cybersecurite je vais le rendre un peu plus sécurisé son système à mamie.
+### Clean Empty Files and Directories Script
 
+This script searches for and removes empty files and directories within a specified directory.
+
+- **File**: `remove_empty_files_and_dirs.py`
+- **Function**: Deletes files with zero bytes and removes empty directories.
+- **Usage**:
+    ```python
+    directory_to_clean = "C:/path/to/your/directory"
+    remove_empty_files_and_dirs(directory_to_clean)
+    ```
+- **Example Output**: `Deleted empty file: C:/path/to/file.txt`
+
+---
+
+### Cleanup Downloads Script
+
+Moves files older than a specified number of days from the downloads folder to an archive folder with the current date.
+
+- **File**: `cleanup_downloads.py`
+- **Function**: Archives files from `download_dir` older than `days` days to `archive_dir`.
+- **Usage**:
+    ```python
+    download_dir = "C:/Users/YourUsername/Downloads"
+    archive_dir = "C:/Users/YourUsername/Archives"
+    cleanup_downloads(download_dir, archive_dir)
+    ```
+- **Example Output**: `Archived file.txt to C:/Users/YourUsername/Archives/Archive_2024-11-01`
+
+---
+
+### Duplicate File Finder Script
+
+Finds and deletes duplicate files within a directory by comparing file hashes.
+
+- **File**: `find_and_delete_duplicates.py`
+- **Function**: Identifies duplicate files by computing SHA-256 hash values.
+- **Usage**:
+    ```python
+    directory = "C:/path/to/your/directory"
+    duplicates = find_duplicates(directory)
+    delete_duplicates(duplicates)
+    ```
+- **Example Output**: `Deleted duplicate: C:/path/to/duplicate.txt (Original: C:/path/to/original.txt)`
+
+---
+
+### Organize Files Script
+
+This script organizes files within a directory either by file type (extension) or by the last modification date.
+
+- **File**: `organize_files.py`
+- **Functions**:
+  - `organize_files_by_type`: Organizes files by file extension.
+  - `organize_files_by_date`: Organizes files by last modification date.
+- **Usage**:
+    ```python
+    directory = "C:/path/to/your/directory"
+    organize_files_by_type(directory)  # Organizes by type
+    # organize_files_by_date(directory)  # Uncomment to organize by date
+    ```
+- **Example Output**: `Moved file.txt to C:/path/to/your/directory/TXT`
+
+---
+
+### Security Monitoring Script
+
+Monitors the system for certain security indicators, such as startup programs, recently modified sensitive files, and unusual network connections.
+
+- **File**: `security_monitor.py`
+- **Function**: Checks for:
+  - Startup programs not on a whitelist.
+  - Recently modified files in sensitive directories.
+  - Suspicious network connections.
+- **Usage**:
+    ```python
+    # Ensure `config.json` is correctly set up
+    run_security_check()
+    ```
+- **Configuration File**:
+    - **config.json** should define `whitelist` for programs and connections, and `sensitive_dirs` for monitoring.
+- **Example Output**: Logs findings to `security_log.json`.
+
+---
+
+### Setup Instructions
+
+1. **Clone the Repository**:
+    ```bash
+    git clone https://github.com/yourusername/yourrepo.git
+    cd yourrepo
+    ```
+
+2. **Set Up Virtual Environment**:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # Use `venv\Scripts\activate` on Windows
+    ```
+
+3. **Install Required Packages**:
+    - Run `pip install -r requirements.txt` (if applicable) to install dependencies like `psutil`.
+
+4. **Configuration**:
+    - **config.json**: Modify this file to customize the whitelist for `security_monitor.py` and specify sensitive directories.
+
+---
+
+### Example `config.json`
+
+```json
+{
+  "whitelist": {
+    "startup_programs": ["Program1", "Program2"],
+    "network_connections": [
+      {"ip": "192.168.0.1", "port": 80},
+      {"ip": "192.168.0.2", "port": 443}
+    ]
+  },
+  "sensitive_dirs": [
+    "C:/Users/YourUsername/Documents",
+    "C:/Users/YourUsername/Desktop"
+  ]
+}
