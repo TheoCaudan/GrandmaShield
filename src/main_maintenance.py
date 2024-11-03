@@ -1,8 +1,3 @@
-import os
-import time
-from datetime import datetime
-import shutil
-
 # Importing functions from each of the scripts
 from automatic_backup import backup_files
 from downloads_cleaner import cleanup_downloads
