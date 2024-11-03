@@ -43,8 +43,8 @@
         ]
     },
     "sensitive_dirs": [
-        "C:/Users/theoc/Documents",
-        "C:/Users/theoc/VirtualBox VMs",
-        "C:/Users/theoc/.ssh"
+        "C:/Users/some/user/sensitive/dir",
+        "C:/Users/some/user/sensitive/dir",
+        "C:/Users/some/user/sensitive/dir"
     ]
 }
