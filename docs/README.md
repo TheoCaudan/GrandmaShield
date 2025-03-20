@@ -123,8 +123,8 @@ Monitors the system for certain security indicators, such as startup programs, r
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/yourrepo.git
-    cd yourrepo
+    git clone https://github.com/TheoCaudan/mamie.git
+    cd mamie
     ```
 
 2. **Set Up Virtual Environment**:
