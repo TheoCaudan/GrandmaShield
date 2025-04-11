@@ -3,6 +3,8 @@
 
 # Utility Scripts for File Management, Backup, and Security
 
+In order to respond to "How  can I help my grandmother to maintain her computer tidy and clean?", or at least improve that on hers, so I don't have to do it manually when it's already full of duplicates and viruses.
+
 This repository contains a series of Python scripts that automate various tasks such as backing up files, organizing directories, cleaning up downloads, and performing basic security checks. Below is a brief overview of each script and how to use them.
 
 ---
