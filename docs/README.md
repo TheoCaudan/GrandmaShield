@@ -125,8 +125,8 @@ Monitors the system for certain security indicators, such as startup programs, r
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/TheoCaudan/mamie.git
-    cd mamie
+    git clone https://github.com/TheoCaudan/GrandmaShield.git
+    cd grandmashield
     ```
 
 2. **Set Up Virtual Environment**:
